@@ -25,7 +25,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 import { DashboardContent } from "@/components/dashboard-content"
-import Card from '@/components/ui/Card'
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import BudgetActualChart from '@/components/charts/BudgetActualChart'
 
 const navigationItems = [
