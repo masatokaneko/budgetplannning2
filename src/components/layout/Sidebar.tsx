@@ -1,12 +1,14 @@
+"use client"
+
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const navigation = [
-  { name: 'ダッシュボード', href: '/' },
-  { name: '予算策定', href: '/budget' },
-  { name: '実績データ', href: '/actuals' },
+  { name: 'ダッシュボード', href: '/dashboard' },
+  { name: '予算策定', href: '/budget-planning' },
+  { name: '実績取込', href: '/actual-import' },
   { name: '予実分析', href: '/analysis' },
-  { name: 'マスタ管理', href: '/masters' },
+  { name: 'マスタ管理', href: '/master' },
 ]
 
 export default function Sidebar() {
@@ -36,4 +38,4 @@ export default function Sidebar() {
       </nav>
     </div>
   )
-} 
+}
