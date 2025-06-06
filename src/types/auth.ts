@@ -1,21 +1,26 @@
-export type UserRole = 'ADMIN' | 'MANAGER' | 'USER';
-export type UserStatus = 'ACTIVE' | 'INACTIVE' | 'SUSPENDED';
-
 export interface User {
-  id: number;
-  email: string;
-  name: string;
-  role: UserRole;
-  status: UserStatus;
-  createdAt: Date;
-  updatedAt: Date;
-  lastLoginAt: Date;
-  metadata?: Record<string, any>;
+  id: string
+  username: string
+  fullName: string
+  role: 'admin' | 'user' | 'viewer'
+  email?: string
+  createdAt: Date
+  updatedAt: Date
 }
 
-export interface UserInput {
-  email: string;
-  name: string;
-  role: UserRole;
-  metadata?: Record<string, any>;
-} 
+export interface LoginCredentials {
+  username: string
+  password: string
+}
+
+export interface AuthResponse {
+  user: User
+  token: string
+}
+
+export interface AuthState {
+  user: User | null
+  isAuthenticated: boolean
+  isLoading: boolean
+  error: string | null
+}

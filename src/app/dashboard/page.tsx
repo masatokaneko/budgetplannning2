@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
+import { AuthenticatedLayout } from "@/components/layout/AuthenticatedLayout"
 
 // 仮データ
 const monthlyData = [
@@ -47,8 +48,9 @@ export default function DashboardPage() {
   const [selectedMonth, setSelectedMonth] = useState<string | null>(null)
 
   return (
-    <div className="flex flex-col space-y-6">
-      <div className="flex items-center justify-between">
+    <AuthenticatedLayout>
+      <div className="flex flex-col space-y-6">
+        <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold text-gray-900">ダッシュボード</h2>
         <div className="text-sm text-gray-500">最終更新: 2024年10月15日 09:30</div>
       </div>
@@ -258,6 +260,7 @@ export default function DashboardPage() {
           <ArrowRight className="ml-1 h-4 w-4" />
         </Button>
       </div>
-    </div>
+      </div>
+    </AuthenticatedLayout>
   )
 }

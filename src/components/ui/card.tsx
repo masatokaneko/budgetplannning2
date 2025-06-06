@@ -2,43 +2,20 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-interface CardProps {
-  title: string
-  value: string | number
-  change?: number
-  changeLabel?: string
-  icon?: React.ReactNode
-}
-
-export default function Card({ title, value, change, changeLabel, icon }: CardProps) {
-  return (
-    <div className="bg-white overflow-hidden shadow rounded-lg">
-      <div className="p-5">
-        <div className="flex items-center">
-          {icon && <div className="flex-shrink-0">{icon}</div>}
-          <div className="ml-5 w-0 flex-1">
-            <dl>
-              <dt className="text-sm font-medium text-gray-500 truncate">{title}</dt>
-              <dd>
-                <div className="text-lg font-medium text-gray-900">{value}</div>
-              </dd>
-            </dl>
-          </div>
-        </div>
-      </div>
-      {change !== undefined && (
-        <div className="bg-gray-50 px-5 py-3">
-          <div className="text-sm">
-            <span className={`font-medium ${change >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-              {change >= 0 ? '+' : ''}{change}%
-            </span>
-            <span className="text-gray-500 ml-2">{changeLabel}</span>
-          </div>
-        </div>
-      )}
-    </div>
-  )
-}
+const Card = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(
+      "rounded-lg border bg-card text-card-foreground shadow-sm",
+      className
+    )}
+    {...props}
+  />
+))
+Card.displayName = "Card"
 
 const CardHeader = React.forwardRef<
   HTMLDivElement,
@@ -99,4 +76,4 @@ const CardFooter = React.forwardRef<
 ))
 CardFooter.displayName = "CardFooter"
 
-export { CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
